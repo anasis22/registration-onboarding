@@ -1,11 +1,10 @@
 import React from 'react'
+import ScreenOne from './components/ScreenOne'
 
 const App = () => {
   return (
     <div>
-       <h1 className="text-3xl font-normal text-tRose font-tAmarnatFont">
-      Oasis.
-    </h1>
+      <ScreenOne />
     </div>
   )
 }
