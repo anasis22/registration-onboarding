@@ -39,8 +39,11 @@ export default {
       },
       fontSize:{
          tGayathriSize: '6rem',
+         tGayathriSizeTab: '4rem',
          t20px: '1.18rem',
          t18px: '1rem',
+         t16px: '.9rem',
+         t15px: '.8rem',
          tJoinUs: '1.8rem',
          tNormalHead: '1.110rem',
          tNormalHead: '1.020rem',
@@ -75,6 +78,13 @@ export default {
       },
       animation:{
         borderTransition: 'borderTransition .2s ease-in forwards' 
+      },
+      screens:{
+        mobile: '414px',
+        tablet: '640px',
+        ipad: '768px',
+        laptop: '1024px',
+        desktop: '1280px',
       }
     },
   },
