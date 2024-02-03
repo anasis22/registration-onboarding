@@ -32,7 +32,7 @@ export default {
         tGayathriFont: "'Gayathri', sans-serif"
       },
       backgroundImage: {
-        'building': "url('/src/assets/images/building.jpeg')",
+        'building': "linear-gradient(rgba(21, 101, 216, 0.9), rgba(21, 101, 216, 0.9)), url('/src/assets/images/building.jpeg')",
       },
       fontSize:{
          tGayathriSize: '6rem',

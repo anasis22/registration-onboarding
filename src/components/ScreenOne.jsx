@@ -18,7 +18,7 @@ const ScreenOne = () => {
     ">
       {/* Blue Side Frame */}
       <div
-        className="relative h-full flex items-center justify-between  flex-col bg-background-image bg-cover bg-center bg-no-repeat
+        className="relative h-full flex items-center justify-between  flex-col bg-building bg-cover bg-center bg-no-repeat
         laptop:w-tScreenBW laptop:pt-14 laptop:pb-20 laptop:pr-24 laptop:pl-24
         ipad:w-tScreenBW ipad:pt-12 ipad:pb-20 ipad:pr-16 ipad:pl-16
         tablet:w-tScreenBW tablet:pt-10 tablet:pb-20 tablet:pr-12 tablet:pl-12
