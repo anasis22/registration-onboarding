@@ -189,7 +189,7 @@ const ScreenOne = () => {
                   Personal account to manage all you activities.
                 </p>
               </section>
-              <img className="laptop:ml-0 ipad:ml-2" src={RightArrow} alt="right" />
+              <img className="laptop:ml-0 ipad:ml-2 mobile:ml-4" src={RightArrow} alt="right" />
             </section>
 
             <section className="w-full cursor-pointer flex items-center justify-center rounded-md border-bw border-solid p-4 mt-6 shadow-md hover:shadow-lg ">
