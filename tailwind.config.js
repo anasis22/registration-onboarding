@@ -40,6 +40,7 @@ export default {
       fontSize:{
          tGayathriSize: '6rem',
          tGayathriSizeTab: '4rem',
+         tGayathriSizeMobile: '3rem',
          t20px: '1.18rem',
          t18px: '1rem',
          t16px: '.9rem',
@@ -54,18 +55,23 @@ export default {
         logoNormalW: '2.725rem',
         tScreenBW: '45%',
         tScreenWW: '55%',
-        individualPW: '3.25rem'
+        individualPW: '3.25rem',
+        seventyPercent: '67%',
+        eightyPercent: '78%'
+        
       },
       height:{
         logoNormalH: '1.875rem',
-        individualPH: '3.25rem'
+        individualPH: '3.25rem',
+        mobileWhitesideH: '80%' 
       },
       margin:{
         mlForOasisL: '5.125rem',
         mlForOasisT: '3.375rem'
       },
       lineHeight:{
-        tParaLH: '33px'
+        tParaLH: '33px',
+        tParaLHMobile: '28px',
       },
       borderWidth:{
         bw: '1.4px',
@@ -80,7 +86,7 @@ export default {
         borderTransition: 'borderTransition .2s ease-in forwards' 
       },
       screens:{
-        mobile: '414px',
+        mobile: '300px',
         tablet: '640px',
         ipad: '768px',
         laptop: '1024px',
