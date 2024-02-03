@@ -1,4 +1,5 @@
 import React from "react";
+import OasisLogo  from '/src/assets/icons/OasisLogo.png'
 
 const ScreenOne = () => {
   return (
@@ -25,7 +26,7 @@ const ScreenOne = () => {
             tablet:w-8 tablet:h-6
             mobile:w-7 mobile:h-5
             "
-            src="./src/assets/icons/OasisLogo.png"
+            src={OasisLogo}
             alt="logo"
           />
           <p className="font-tAmarnatFont text-tWhiteF ml-2 mt-2
