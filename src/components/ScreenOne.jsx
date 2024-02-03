@@ -1,6 +1,13 @@
 import React from "react";
 import OasisLogo  from '/src/assets/icons/OasisLogo.png'
-import dots from '/src/assets/icons/Dots.png'
+import Dots from '/src/assets/icons/Dots.png'
+import Gtick from '/src/assets/icons/Gtick.png'
+import Lshape from '/src/assets/icons/Lshape.png'
+import Circle from '/src/assets/icons/circle.png'
+import Individual from '/src/assets/icons/individual.png'
+import RightArrow from '/src/assets/icons/rightArrow.png'
+import Business from '/src/assets/icons/business.png'
+
 const ScreenOne = () => {
   return (
     <div className=" 
@@ -40,7 +47,7 @@ const ScreenOne = () => {
           ipad:w-12 ipad:mr-14
           tablet:w-11 tablet:mr-10
           mobile:w-10 mobile:mr-10
-          " src={dots} alt="dots" />
+          " src={Dots} alt="dots" />
         </section>
 
         <section
@@ -89,7 +96,7 @@ const ScreenOne = () => {
               tablet:w-4
               mobile:w-3
               ml-2"
-              src="./src/assets/icons/Gtick.png"
+              src={Gtick}
               alt="verified"
             />
           </section>
@@ -100,7 +107,7 @@ const ScreenOne = () => {
         tablet:w-6 tablet:right-16 tablet:bottom-60
         mobile:w-5 mobile:right-16 mobile:bottom-28
         ">
-          <img src="./src/assets/icons/Lshape.png" alt="lshape" />
+          <img src={Lshape} alt="lshape" />
         </section>
 
         <img
@@ -110,7 +117,7 @@ const ScreenOne = () => {
           tablet:w-16
           mobile:w-14
           "
-          src="./src/assets/icons/circle.png"
+          src={Circle}
           alt="circle"
         />
       </div>
@@ -171,7 +178,7 @@ const ScreenOne = () => {
             <section className="w-full cursor-pointer bg-tWhiteBH flex items-center justify-center rounded-md border-bw border-solid border-tBlueF hover:shadow-lg p-4 ">
               <img
                 className="w-10 h-10"
-                src="./src/assets/icons/individual.png"
+                src={Individual}
                 alt="individual"
               />
               <section className="ml-6">
@@ -182,13 +189,13 @@ const ScreenOne = () => {
                   Personal account to manage all you activities.
                 </p>
               </section>
-              <img className="laptop:ml-0 ipad:ml-2" src="./src/assets/icons/rightArrow.png" alt="right" />
+              <img className="laptop:ml-0 ipad:ml-2" src={RightArrow} alt="right" />
             </section>
 
             <section className="w-full cursor-pointer flex items-center justify-center rounded-md border-bw border-solid p-4 mt-6 shadow-md hover:shadow-lg ">
               <img
                 className="w-10 h-10"
-                src="./src/assets/icons/business.png"
+                src={Business}
                 alt="individual"
               />
               <section className="ml-6">
@@ -199,7 +206,7 @@ const ScreenOne = () => {
                   Own or belong to a company, this is for you.
                 </p>
               </section>
-              <img src="./src/assets/icons/rightArrowWhite.png" alt="right" />
+              <img src={RightArrow} alt="right" />
             </section>
           </section>
         </section>
