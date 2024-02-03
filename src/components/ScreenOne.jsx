@@ -1,6 +1,6 @@
 import React from "react";
 import OasisLogo  from '/src/assets/icons/OasisLogo.png'
-
+import dots from './src/assets/icons/Dots.png'
 const ScreenOne = () => {
   return (
     <div className=" 
@@ -40,7 +40,7 @@ const ScreenOne = () => {
           ipad:w-12 ipad:mr-14
           tablet:w-11 tablet:mr-10
           mobile:w-10 mobile:mr-10
-          " src="./src/assets/icons/Dots.png" alt="dots" />
+          " src={dots} alt="dots" />
         </section>
 
         <section
