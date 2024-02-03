@@ -1,6 +1,6 @@
 import React from "react";
 import OasisLogo  from '/src/assets/icons/OasisLogo.png'
-import dots from './src/assets/icons/Dots.png'
+import dots from '/src/assets/icons/Dots.png'
 const ScreenOne = () => {
   return (
     <div className=" 
