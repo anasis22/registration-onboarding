@@ -24,6 +24,7 @@ export default {
         tGreenL: '#4CAF50',
         tLGrey1: '#BABABA',
         tLGrey2: '#BDBDBD',
+        tLWhite: '#ededed',
         
       },
       fontFamily:{
@@ -42,6 +43,9 @@ export default {
          t18px: '1rem',
          t16px: '.9rem',
          t15px: '.8rem',
+         t14px: '.7',
+         t12px: '.6',
+         t30px: '1.875',
          tJoinUs: '1.8rem',
          tNormalHead: '1.110rem',
          tNormalHead: '1.020rem',

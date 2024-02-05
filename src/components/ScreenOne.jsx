@@ -6,9 +6,20 @@ import Lshape from '/src/assets/icons/Lshape.png'
 import Circle from '/src/assets/icons/circle.png'
 import Individual from '/src/assets/icons/individual.png'
 import RightArrow from '/src/assets/icons/rightArrow.png'
+import RightArrowWhite from '/src/assets/icons/rightArrowWhite.png'
 import Business from '/src/assets/icons/business.png'
+import { useData } from "../contexts/DataContexts";
+
 
 const ScreenOne = () => {
+
+const {myborder,setmyBorder} = useData();
+
+const clickToBorder = () => {
+  setmyBorder(!myborder)
+}
+
+
   return (
     <div className=" 
     laptop:w-screen laptop:h-screen laptop:flex laptop:flex-row
@@ -24,7 +35,6 @@ const ScreenOne = () => {
         tablet:w-tScreenBW tablet:pt-10 tablet:pb-20 tablet:pr-12 tablet:pl-12
         mobile:w-screen mobile:pt-8 mobile:pb-18 mobile:pr-10 mobile:pl-10
         "
-
       >
         <section className="w-full flex items-center justify-start ">
           <img
@@ -37,6 +47,7 @@ const ScreenOne = () => {
             alt="logo"
           />
           <p className="font-tAmarnatFont text-tWhiteF ml-2 mt-2
+          tablet:text-base
           mobile:text-sm
           ">Oasis.</p>
         </section>
@@ -56,8 +67,7 @@ const ScreenOne = () => {
           tablet:mb-56
           ipad:mb-56
           mobile:mb-44 mobile:mt-12
-
-           "
+          "
         >
           <p className="w-full h-12 font-tGayathriFont text-tLblue
           laptop:text-tGayathriSize laptop:h-12
@@ -134,7 +144,6 @@ const ScreenOne = () => {
         ipad:static ipad:justify-end ipad:text-t16px ipad:pr-16 ipad:pt-14 ipad:mt-0
         tablet:static tablet:justify-end tablet:text-t15px tablet:pr-12 tablet:pt-12 tablet:mt-0
         mobile:justify-center mobile:text-t16px mobile:mt-20 mobile:absolute mobile:bottom-20
-        
         ">
           <p className="font-light text-tGreyF">Already have an account?</p>
           <p className="ml-1 cursor-pointer text-tBlueF">Sign In</p>
@@ -159,7 +168,7 @@ const ScreenOne = () => {
             mobile:text-xl
             ">Join Us!</h1>
             <p className="font-tInterFont font-regular text-tGreyF
-            laptop:text-tNormalHead
+            laptop:text-tNormalHead laptop:mt-2
             ipad:text-sm ipad:mt-2
             tablet:text-sm tablet:mt-2
             mobile:text-sm mobile:mt-2
@@ -192,13 +201,13 @@ const ScreenOne = () => {
               <img className="laptop:ml-0 ipad:ml-2 mobile:ml-4" src={RightArrow} alt="right" />
             </section>
 
-            <section className="w-full cursor-pointer flex items-center justify-center rounded-md border-bw border-solid p-4 mt-6 shadow-md hover:shadow-lg ">
+            <section onClick={clickToBorder} className={`w-full cursor-pointer flex items-center justify-center rounded-md border-bw border-solid p-4 mt-6 shadow-md hover:shadow-lg ${myborder && 'border border-tBlueF'}`}>
               <img
                 className="w-10 h-10"
                 src={Business}
                 alt="individual"
               />
-              <section className="ml-6">
+              <section className={`ml-6`}>
                 <h3 className="text-tNormalMin font-medium font-tInterFont">
                   Business
                 </h3>
@@ -206,7 +215,7 @@ const ScreenOne = () => {
                   Own or belong to a company, this is for you.
                 </p>
               </section>
-              <img src={RightArrow} alt="right" />
+              <img src={`${myborder ? RightArrow : RightArrowWhite}`} alt="right" />
             </section>
           </section>
         </section>
