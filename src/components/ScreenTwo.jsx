@@ -152,45 +152,45 @@ const ScreenTwo = () => {
       "
       >
         <section
-          className="w-full flex font-tInterFont
-        laptop:static laptop:justify-between laptop:text-t16px laptop:pl-20 laptop:pr-20 laptop:pt-14 laptop:mt-0
-        ipad:static ipad:justify-between ipad:text-t16px ipad:pl-20 ipad:pr-16 ipad:pt-14 ipad:mt-0
-        tablet:static tablet:justify-between tablet:text-t15px tablet:pl-20 tablet:pr-12 tablet:pt-12 tablet:mt-0
-        mobile:justify-between mobile:text-t16px mobile:pl-20 mobile:pr-20 mobile:mt-20 mobile:absolute mobile:bottom-20
+          className="w-full flex font-tInterFont 
+        laptop:static laptop:justify-between laptop:text-t16px laptop:px-20 laptop:pt-14 laptop:mt-0
+        ipad:static ipad:justify-between ipad:text-t15px ipad:px-20 ipad:pt-14 ipad:mt-0
+        tablet:static tablet:justify-between tablet:text-t15px tablet:px-12 tablet:pt-12 tablet:mt-0
+        mobile:static mobile:justify-between mobile:text-t15px mobile:px-6 mobile:mt-6
         "
         >
-          <section className="w-16 h-5 flex items-center cursor-pointer">
+          <section className="w-16 h-5 flex items-center cursor-pointer ">
             <img className="w-5 h-5" src={Back} alt="back" />
             <p className="text-tGreyF ml-1">Back</p>
           </section>
-          <section className="text-right">
+          <section className="text-right ">
             <p className="font-light text-tLGrey2">STEP 01/03</p>
             <p className="text-tGreyF">Personal Info.</p>
           </section>
         </section>
 
         <section
-          className="h-3/5 flex flex-col items-center justify-center
-        laptop:w-3/5 laptop:mr-24 laptop:mt-20 
-        ipad:mr-16 ipad:mt-4
-        tablet:w-seventyPercent tablet:mr-8 tablet:mt-5
-        mobile:w-eightyPercent
+          className="flex flex-col items-center justify-center 
+        laptop:w-3/5 laptop:mr-16 laptop:mt-8 
+        ipad:w-3/5 ipad:mr-0 ipad:mt-8 
+        tablet:w-seventyPercent tablet:mr-0 tablet:mt-12 
+        mobile:w-exactEighty mobile:mt-6 mobile:pb-10
         "
         >
           <section
             className="
-          laptop:mt-0 laptop:pr-16 laptop:pl-16
-          ipad:mt-0 ipad:pr-12 ipad:pl-4
-          tablet:mt-0 tablet:pr-10 tablet:pl-0
-          mobile:mt-44
+          laptop:mt-0 laptop:px-0
+          ipad:mt-0 ipad:px-0
+          tablet:mt-0 tablet:pl-0
+          mobile:mt-0
           "
           >
             <h1
               className="font-tInterFont font-bold
-            laptop:text-t30px
-            ipad:text-2xl
-            tablet:text-xl
-            mobile:text-xl
+            laptop:text-2xl
+            ipad:text-t30px
+            tablet:text-lg
+            mobile:text-md
             "
             >
               Register Individual Account!
@@ -206,13 +206,18 @@ const ScreenTwo = () => {
               For the purpose of industry regulation, your details are required.
             </p>
           </section>
-          <hr className="w-3/4 border-tWhiteHL mt-2 mb-1" />
+          <hr className="w-3/4 border-tWhiteHL mt-2 mb-1
+          laptop:w-full
+          ipad:w-full
+          tablet:w-full
+          mobile:w-full
+          " />
           <form
             className=" 
-          laptop:mt-0 laptop:p-4 laptop:w-4/5 laptop:h-5/6 
-          ipad:p-3
-          tablet:mt-6
-          mobile:mt-6
+          laptop:mt-0 laptop:w-full
+          ipad:mt-0 ipad:w-full
+          tablet:mt-0 tablet:w-full
+          mobile:pt-6 mobile:w-full
           "
           >
             <section className="w-full flex flex-col">
@@ -244,7 +249,7 @@ const ScreenTwo = () => {
                 Create password*
               </label>
               <input
-                className="mt-2 text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
+                className="mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
                 type={`${showPassword ? 'text' : 'password'}`}
                 required
                 placeholder="Enter your password"
@@ -264,9 +269,19 @@ const ScreenTwo = () => {
                     <p className="text-t12px text-tLWhite">Or</p>
                     <hr className="w-2/6 border-tLWhite"/>
                 </section>
-                <button className="w-full flex px-10 mt-2 text-t16px py-3.5 rounded-md bg-tWhiteF shadow-md hover:shadow-lg font-regular to-tBlack ">
+                <button className="w-full flex mt-2 text-t16px py-3.5 rounded-md bg-tWhiteF shadow-md hover:shadow-lg font-regular 
+                laptop:px-10
+                ipad:px-10
+                tablet:px-10
+                mobile:px-9 mobile:items-center justify-center
+                ">
                     <img className="w-5" src={Google} alt="google" />
-                    <p className="text-t16px ml-12">Register with google</p>
+                    <p className="text-t16px
+                    laptop:ml-12
+                    ipad:ml-6
+                    tablet:ml-4
+                    mobile:ml-2
+                    ">Register with google</p>
                 </button>
             </section>
           </form>

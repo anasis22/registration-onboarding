@@ -58,7 +58,8 @@ export default {
         tScreenWW: '55%',
         individualPW: '3.25rem',
         seventyPercent: '67%',
-        eightyPercent: '78%'
+        eightyPercent: '78%',
+        exactEighty: '80%',
         
       },
       height:{
