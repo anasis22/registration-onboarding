@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -9,15 +9,20 @@ import RightArrow from "/src/assets/icons/rightArrow.png";
 import RightArrowWhite from "/src/assets/icons/rightArrowWhite.png";
 import Business from "/src/assets/icons/business.png";
 import { useData } from "../contexts/DataContexts";
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import ScreenTwo from "./ScreenTwo";
 
 const ScreenOne = () => {
   const { myborder, setmyBorder } = useData();
+  const navigate = useNavigate()
 
   const clickToBorder = () => {
     setmyBorder(!myborder);
   };
+
+  useEffect(() => {
+    return navigate("/")
+  },[])
 
   return (
     <div

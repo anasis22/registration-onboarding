@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -8,14 +8,22 @@ import Back from "/src/assets/icons/back.png";
 import Google from "/src/assets/icons/google.png"
 import { useData } from "../contexts/DataContexts";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css"
 
 const ScreenTwo = () => {
 
     const {showPassword,setShowPassword} = useData();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [phone,setPhone] = useState();
+    const [phoneInput,setPhoneInput] = useState(false);
 
     const viewPassword = () => {
         setShowPassword(!showPassword);
+    }
+
+    const phoneInputBorder = () => {
+      setPhoneInput(!phoneInput)
     }
 
     const siteGoogle = () => {
@@ -170,8 +178,8 @@ const ScreenTwo = () => {
             <p className="text-tGreyF ml-1">Back</p>
           </section>
           <section className="text-right ">
-            <p className="font-light text-tLGrey2">STEP 01/03</p>
-            <p className="text-tGreyF">Personal Info.</p>
+            <p className="font-light text-tLGrey2">STEP 02/03</p>
+            <p className="text-tGreyF">Residency Info.</p>
           </section>
         </section>
 
@@ -199,7 +207,7 @@ const ScreenTwo = () => {
             mobile:text-md
             "
             >
-              Register Individual Account!
+              Complete Your Profile!
             </h1>
             <p
               className="font-tInterFont font-regular text-tGreyF
@@ -228,31 +236,34 @@ const ScreenTwo = () => {
           >
             <section className="w-full flex flex-col">
               <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Your fullname*
+              Phone number
               </label>
-              <input
-                className="mt-2 text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
-                type="text"
-                required
-                placeholder="Enter your name"
+              <PhoneInput
+              onClick={phoneInputBorder} 
+              className={`mt-2 text-t15px text-tGreyFM focus:outline-none rounded-md border border-tGreyF py-3.5 px-4 ${phoneInput && 'border-tBlueH shadow-md'}` }
+              placeholder="Enter your number"
+              international
+              value={phone}
+              required
+              onChange={setPhone}
               />
             </section>
 
             <section className="w-full flex flex-col mt-3">
               <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Email address*
+                Your address
               </label>
               <input
                 className="mt-2 peer text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
-                type="email"
+                type="text"
                 required
-                placeholder="Enter email address"
+                placeholder="Please enter address"
               />
             </section>
 
             <section className="w-full flex flex-col mt-3 relative">
               <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Create password*
+              Country of residence
               </label>
               <input
                 className="mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"

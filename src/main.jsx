@@ -6,6 +6,7 @@ import "./index.css";
 import NotFound from "./components/NotFound.jsx";
 import ScreenTwo from "./components/ScreenTwo.jsx";
 import { DataProvider } from "./contexts/DataContexts.jsx";
+import ScreenThree from "./components/ScreenThree.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path: "ScreenTwo",
     element: <ScreenTwo />,
   },
+  {
+    path: "ScreenThree",
+    element: <ScreenThree />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
