@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -6,26 +6,11 @@ import Lshape from "/src/assets/icons/Lshape.png";
 import Circle from "/src/assets/icons/circle.png";
 import Back from "/src/assets/icons/back.png";
 import Secure from "/src/assets/icons/lock.png";
-import Down from "/src/assets/icons/downArrow.png";
 import { useData } from "../contexts/DataContexts";
 import { useNavigate } from "react-router-dom";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import countries from "../contexts/Countries.json"
 
-const ScreenThree = () => {
-  const { showPassword, setShowPassword } = useData();
+const ScreenFour = () => {
   const navigate = useNavigate();
-  const [phone, setPhone] = useState();
-  const [phoneInput, setPhoneInput] = useState(false);
-
-  const viewPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const phoneInputBorder = () => {
-    setPhoneInput(!phoneInput);
-  };
 
   return (
     <div
@@ -171,24 +156,24 @@ const ScreenThree = () => {
         "
         >
           <section
-            onClick={() => navigate("/ScreenTwo")}
+            onClick={() => navigate(-1)}
             className="w-16 h-5 flex items-center cursor-pointer "
           >
             <img className="w-5 h-5" src={Back} alt="back" />
             <p className="text-tGreyF ml-1">Back</p>
           </section>
           <section className="text-right ">
-            <p className="font-light text-tLGrey2">STEP 02/03</p>
-            <p className="text-tGreyF">Residency Info.</p>
+            <p className="font-light text-tLGrey2">STEP 03/03</p>
+            <p className="text-tGreyF">Bank Verification</p>
           </section>
         </section>
 
         <section
           className="flex flex-col items-center justify-center 
-        laptop:w-3/5 laptop:mr-16 laptop:mt-8 
-        ipad:w-3/5 ipad:mr-0 ipad:mt-8 
-        tablet:w-seventyPercent tablet:mr-0 tablet:mt-12 
-        mobile:w-exactEighty mobile:mt-6 mobile:pb-10
+        laptop:w-3/5 laptop:mr-16 laptop:mt-24
+        ipad:w-3/5 ipad:mr-0 ipad:mt-24
+        tablet:w-seventyPercent tablet:mr-0 tablet:mt-32
+        mobile:w-exactEighty mobile:mt-28 mobile:pb-10
         "
         >
           <section
@@ -236,59 +221,27 @@ const ScreenThree = () => {
           mobile:pt-6 mobile:w-full
           "
           >
-            <section className="w-full flex flex-col">
+            <section className="w-full flex flex-col relative">
               <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Phone number
-              </label>
-              <PhoneInput
-                onClick={phoneInputBorder}
-                className={`mt-2 text-t15px text-tGreyFM focus:outline-none rounded-md border border-tGreyF py-3.5 px-4 ${
-                  phoneInput && "border-tBlueH shadow-md"
-                }`}
-                placeholder="Enter your number"
-                international
-                value={phone}
-                required
-                onChange={setPhone}
-              />
-            </section>
-
-            <section className="w-full flex flex-col mt-3">
-              <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Your address
+                Bank verification number (BVN)
               </label>
               <input
-                className="mt-2 peer text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
+                className="mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
                 type="text"
                 required
-                placeholder="Please enter address"
+                placeholder="Enter your number"
+                value="090912345567"
               />
-            </section>
-
-            <section className="w-full flex flex-col mt-3 relative">
-              <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Country of residence
-              </label>
-              <select
-                className="cursor-pointer mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
-                name="countries"
-                id="countries"
-              >
-                <option value="">Select a country</option>
-                {countries.map((country) => {
-                  return <option key={country.code} value={country.code}>{country.name}</option>
-                })}
-              </select>
               <img
-                className="w-5 absolute cursor-pointer right-5 bottom-3.5"
-                src={Down}
-                alt="down"
+                className="absolute cursor-pointer text-tBlack text-t15px right-4 bottom-3.5"
+                src={Gtick}
+                alt="verify"
               />
             </section>
 
-            <section className="w-full mt-10">
+            <section className="w-full mt-16">
               <button className="w-full text-t16px py-3.5 px-4 rounded-md bg-tBlueF hover:shadow-lg font-regular text-tWhiteF ">
-                Save and continue
+                Save & Continue
               </button>
             </section>
           </form>
@@ -304,4 +257,4 @@ const ScreenThree = () => {
   );
 };
 
-export default ScreenThree;
+export default ScreenFour;

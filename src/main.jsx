@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound.jsx";
 import ScreenTwo from "./components/ScreenTwo.jsx";
 import { DataProvider } from "./contexts/DataContexts.jsx";
 import ScreenThree from "./components/ScreenThree.jsx";
+import ScreenFour from "./components/ScreenFour.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "ScreenThree",
     element: <ScreenThree />
+  },
+  {
+    path: "ScreenFour",
+    element: <ScreenFour />
   }
 ]);
 

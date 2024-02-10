@@ -32,3 +32,9 @@
 	transform: var(--PhoneInputCountrySelectArrow-transform);
 	opacity: var(--PhoneInputCountrySelectArrow-opacity);
 }
+
+select {
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
