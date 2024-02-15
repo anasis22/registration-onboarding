@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -11,16 +11,28 @@ import { useData } from "../contexts/DataContexts";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import countries from "../contexts/Countries.json"
+import countries from "../contexts/Countries.json";
 
 const ScreenThree = () => {
-  const { showPassword, setShowPassword } = useData();
+  const { mobileNoRef, addressRef, countryRef,user,getData } = useData();
   const navigate = useNavigate();
   const [phone, setPhone] = useState();
   const [phoneInput, setPhoneInput] = useState(false);
 
-  const viewPassword = () => {
-    setShowPassword(!showPassword);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      mobileNoRef.current.value.length > 0 &&
+      addressRef.current.value.length > 0 &&
+      countryRef.current.value.length > 0
+    ) {
+      console.log(user);
+      navigate("/ScreenFour");
+    } else {
+      console.log("somethings wrong");
+    }
   };
 
   const phoneInputBorder = () => {
@@ -229,6 +241,7 @@ const ScreenThree = () => {
           "
           />
           <form
+            onSubmit={handleSubmit}
             className=" 
           laptop:mt-0 laptop:w-full
           ipad:mt-0 ipad:w-full
@@ -241,6 +254,7 @@ const ScreenThree = () => {
                 Phone number
               </label>
               <PhoneInput
+                ref={mobileNoRef}
                 onClick={phoneInputBorder}
                 className={`mt-2 text-t15px text-tGreyFM focus:outline-none rounded-md border border-tGreyF py-3.5 px-4 ${
                   phoneInput && "border-tBlueH shadow-md"
@@ -258,6 +272,7 @@ const ScreenThree = () => {
                 Your address
               </label>
               <input
+                ref={addressRef}
                 className="mt-2 peer text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
                 type="text"
                 required
@@ -274,9 +289,17 @@ const ScreenThree = () => {
                 name="countries"
                 id="countries"
               >
-                <option value="">Select a country</option>
+                <option>Select a country</option>
                 {countries.map((country) => {
-                  return <option key={country.code} value={country.code}>{country.name}</option>
+                  return (
+                    <option
+                      ref={countryRef}
+                      key={country.code}
+                      value={country.code}
+                    >
+                      {country.name}
+                    </option>
+                  );
                 })}
               </select>
               <img
@@ -287,7 +310,10 @@ const ScreenThree = () => {
             </section>
 
             <section className="w-full mt-10">
-              <button className="w-full text-t16px py-3.5 px-4 rounded-md bg-tBlueF hover:shadow-lg font-regular text-tWhiteF ">
+              <button
+                type="submit"
+                className="w-full text-t16px py-3.5 px-4 rounded-md bg-tBlueF hover:shadow-lg font-regular text-tWhiteF "
+              >
                 Save and continue
               </button>
             </section>

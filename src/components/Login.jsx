@@ -1,79 +1,58 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
 import Lshape from "/src/assets/icons/Lshape.png";
 import Circle from "/src/assets/icons/circle.png";
 import Back from "/src/assets/icons/back.png";
-import Google from "/src/assets/icons/google.png";
 import { useData } from "../contexts/DataContexts";
 import { useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
-import { auth } from "../../Firebase";
+import "react-phone-number-input/style.css";
 
-const ScreenTwo = () => {
+const Login = () => {
   const {
+    getData,
+    login,
+    loginEmailRef,
+    loginPasswordRef,
     showPassword,
     setShowPassword,
-    signup,
-    currentUser,
-    nameRef,
-    emailRef,
-    passwordRef,
-    setData,
-    data,
-    userData,
-    getData,
-    gName,
-    setGName
+    fResult,
+    setFResult,
+    usersData,
   } = useData();
-
-
   const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const documentName = {
-      name: nameRef.current.value,
-      email: emailRef.current.value,
-    }
-    
-    try{
-      await signup(emailRef.current.value, passwordRef.current.value)
-      await setData(documentName)
-      navigate("/ScreenThree")
-    }catch(err){
-      err
-    }
-   
-  };
-
-  const googleHandler = async () => {
-    const provider =  new GoogleAuthProvider();
-    try{
-      await signInWithRedirect(auth,provider).then((result) => {
-        const user = result.user;
-        setGName(user.displayName)
-        console.log(gName)
-      })
-    }catch(err){
-      console.log(err);
-    }
-  }
 
   const viewPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await login(loginEmailRef.current.value, loginPasswordRef.current.value);
+      setFResult(
+        usersData.filter((el) => {
+          console.log(el.email == loginEmailRef.current.value);
+          return el.email == loginEmailRef.current.value;
+        })
+      );
+      navigate("/Dashboard");
+    } catch (error) {
+      console.log(error.message);
+      error.code == "auth/wrong-password" && alert("password incorrect");
+      error.code == "auth/user-not-found" &&
+        alert("user not found in this email");
+      error.code == "auth/invalid-credential" &&
+        alert("please enter a valid email address and password");
+    }
+  };
 
   return (
     <div
-      className="
-    laptop:w-screen laptop:h-screen laptop:flex laptop:flex-row
+      className=" justify-center items-center
+    laptop:w-screen laptop:h-screen laptop:flex laptop:flex-row 
     ipad:w-screen ipad:h-screen ipad:flex  ipad:flex-row
     tablet:w-screen tablet:h-screen tablet:flex tablet:flex-row
     mobile:w-screen h-screen mobile:flex flex-col
@@ -220,12 +199,7 @@ const ScreenTwo = () => {
             <img className="w-5 h-5" src={Back} alt="back" />
             <p className="text-tGreyF ml-1">Back</p>
           </section>
-          <section className="text-right ">
-            <p className="font-light text-tLGrey2">STEP 01/03</p>
-            <p className="text-tGreyF">Personal Info.</p>
-          </section>
         </section>
-
         <section
           className="flex flex-col items-center justify-center 
         laptop:w-3/5 laptop:mr-16 laptop:mt-8 
@@ -250,27 +224,9 @@ const ScreenTwo = () => {
             mobile:text-md
             "
             >
-              Register Individual Account!
+              Login to continue
             </h1>
-            <p
-              className="font-tInterFont font-regular text-tGreyF
-            laptop:text-t18px laptop:mt-2 laptop:leading-normal
-            ipad:text-sm ipad:mt-2
-            tablet:text-sm tablet:mt-2
-            mobile:text-sm mobile:mt-2
-            "
-            >
-              For the purpose of industry regulation, your details are required.
-            </p>
           </section>
-          <hr
-            className="w-3/4 border-tWhiteHL mt-2 mb-1
-          laptop:w-full
-          ipad:w-full
-          tablet:w-full
-          mobile:w-full
-          "
-          />
           <form
             onSubmit={handleSubmit}
             className=" 
@@ -282,36 +238,23 @@ const ScreenTwo = () => {
           >
             <section className="w-full flex flex-col">
               <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Your fullname*
+                Email
               </label>
               <input
-                ref={nameRef}
-                className="mt-2 text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
-                type="text"
-                required
-                placeholder="Enter your name"
-              />
-            </section>
-
-            <section className="w-full flex flex-col mt-3">
-              <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Email address*
-              </label>
-              <input
-                ref={emailRef}
-                className="mt-2 peer text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
+                ref={loginEmailRef}
                 type="email"
+                placeholder="Enter your email"
                 required
-                placeholder="Enter email address"
+                className="mt-2 peer text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
               />
             </section>
 
             <section className="w-full flex flex-col mt-3 relative">
               <label className="text-tGreyFM text-t16px" htmlFor="fullname">
-                Create password*
+                Password
               </label>
               <input
-                ref={passwordRef}
+                ref={loginPasswordRef}
                 className="mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
                 type={`${showPassword ? "text" : "password"}`}
                 required
@@ -325,52 +268,19 @@ const ScreenTwo = () => {
               </p>
             </section>
 
-            <section className="flex mt-3">
-              <input type="checkbox" required />
-              <p className="ml-4 text-t16px text-tGreyFM ">
-                I agree to terms & conditions
-              </p>
-            </section>
-
-            <section className="w-full mt-5">
+            <section className="w-full mt-10">
               <button
                 type="submit"
                 className="w-full text-t16px py-3.5 px-4 rounded-md bg-tBlueF hover:shadow-lg font-regular text-tWhiteF "
               >
-                Register Account
+                Login
               </button>
-              <section className="flex items-center justify-between mt-2">
-                <hr className="w-2/6 border-tLWhite" />
-                <p className="text-t12px text-tLWhite">Or</p>
-                <hr className="w-2/6 border-tLWhite" />
-              </section>
             </section>
           </form>
-          <button
-            onClick={() => googleHandler()}
-            className="w-full flex mt-2 text-t16px py-3.5 rounded-md bg-tWhiteF shadow-md hover:shadow-lg font-regular 
-                laptop:px-10
-                ipad:px-10
-                tablet:px-10
-                mobile:px-9 mobile:items-center justify-center
-                "
-          >
-            <img className="w-5" src={Google} alt="google" />
-            <p
-              className="text-t16px
-                    laptop:ml-12
-                    ipad:ml-6
-                    tablet:ml-4
-                    mobile:ml-2
-                    "
-            >
-              Register with google
-            </p>
-          </button>
         </section>
       </div>
     </div>
   );
 };
 
-export default ScreenTwo;
+export default Login;

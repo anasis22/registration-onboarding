@@ -9,20 +9,19 @@ import RightArrow from "/src/assets/icons/rightArrow.png";
 import RightArrowWhite from "/src/assets/icons/rightArrowWhite.png";
 import Business from "/src/assets/icons/business.png";
 import { useData } from "../contexts/DataContexts";
-import { Link, redirect, useNavigate } from "react-router-dom";
-import ScreenTwo from "./ScreenTwo";
+import { Link, useNavigate } from "react-router-dom";
 
 const ScreenOne = () => {
-  const { myborder, setmyBorder } = useData();
-  const navigate = useNavigate()
+  const { myborder, setmyBorder,getData } = useData();
 
   const clickToBorder = () => {
     setmyBorder(!myborder);
   };
 
   useEffect(() => {
-    return navigate("/")
-  },[])
+    getData();
+  }, []);
+
 
   return (
     <div
@@ -168,7 +167,7 @@ const ScreenOne = () => {
         "
         >
           <p className="font-light text-tGreyF">Already have an account?</p>
-          <Link to="ScreenTwo"><p className="ml-1 cursor-pointer text-tBlueF">Sign In</p></Link>
+          <Link to="/Login"><p className="ml-1 cursor-pointer text-tBlueF">Sign In</p></Link>
         </section>
 
         <section

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -11,7 +11,21 @@ import { useNavigate } from "react-router-dom";
 
 const ScreenFour = () => {
   const navigate = useNavigate();
+  const {bankNoRef,usersData,user,setFResult,getData} = useData();
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFResult(usersData.filter((el) => {
+      return el.id == user.id
+    }))
+    if(bankNoRef.current.value.length >= 12){
+      navigate("/Dashboard")
+    }else{
+      console.log('somethings wrong');
+    }
 
+  }
+  
   return (
     <div
       className="
@@ -214,6 +228,7 @@ const ScreenFour = () => {
           "
           />
           <form
+          onSubmit={handleSubmit}
             className=" 
           laptop:mt-0 laptop:w-full
           ipad:mt-0 ipad:w-full
@@ -226,11 +241,11 @@ const ScreenFour = () => {
                 Bank verification number (BVN)
               </label>
               <input
+                ref={bankNoRef}
                 className="mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
                 type="text"
                 required
                 placeholder="Enter your number"
-                value="090912345567"
               />
               <img
                 className="absolute cursor-pointer text-tBlack text-t15px right-4 bottom-3.5"
@@ -240,7 +255,7 @@ const ScreenFour = () => {
             </section>
 
             <section className="w-full mt-16">
-              <button className="w-full text-t16px py-3.5 px-4 rounded-md bg-tBlueF hover:shadow-lg font-regular text-tWhiteF ">
+              <button type="submit" className="w-full text-t16px py-3.5 px-4 rounded-md bg-tBlueF hover:shadow-lg font-regular text-tWhiteF ">
                 Save & Continue
               </button>
             </section>
