@@ -255,7 +255,7 @@ const ScreenFour = () => {
                 required
                 placeholder="Enter the 12 digit numbers"
               />
-              {noLength.length >= 12 ? <img
+              {noLength && noLength.length >= 12 ? <img
                 className="absolute cursor-pointer text-tBlack text-t15px right-4 bottom-3.5"
                 src={Gtick}
                 alt="verify"
