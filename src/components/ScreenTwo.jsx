@@ -16,16 +16,13 @@ const ScreenTwo = () => {
     showPassword,
     setShowPassword,
     signup,
-    currentUser,
     nameRef,
     emailRef,
     passwordRef,
     setData,
-    data,
-    userData,
     getData,
-    gName,
-    setGName
+    setGName,
+    setGEmail
   } = useData();
 
 
@@ -52,11 +49,12 @@ const ScreenTwo = () => {
   const googleHandler = async () => {
     const provider =  new GoogleAuthProvider();
     try{
-      await signInWithRedirect(auth,provider).then((result) => {
-        const user = result.user;
-        setGName(user.displayName)
-        console.log(gName)
-      })
+     const result = await signInWithPopup(auth,provider)
+     const name = result.user.displayName
+     const email = result.user.email
+     setGName(name)
+     setGEmail(email)
+     navigate("/GUserDashboard")
     }catch(err){
       console.log(err);
     }

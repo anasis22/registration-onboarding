@@ -11,6 +11,7 @@ import ScreenFour from "./components/ScreenFour.jsx";
 import PrivateRoute from "./contexts/PrivateRoute.jsx";
 import Dashboard from "./components/Dashboard.jsx";
 import Login from "./components/Login.jsx";
+import GUserDashboard from "./components/GUserDashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/Login",
     element: <Login />
+  },
+  {
+   path: "/GUserDashboard",
+   element: <GUserDashboard />
   },
   {
     element: <PrivateRoute />,

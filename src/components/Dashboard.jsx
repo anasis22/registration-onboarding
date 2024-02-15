@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -13,9 +13,6 @@ const ScreenFour = () => {
   const {
     fResult,
     logOut,
-    setFResult,
-    usersData,
-    user
   } = useData();
 
   const logout = async () => {
