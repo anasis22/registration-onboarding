@@ -35,6 +35,10 @@ const ScreenThree = () => {
     }
   };
 
+  useEffect(() => {
+    getData()
+  },[])
+
   const phoneInputBorder = () => {
     setPhoneInput(!phoneInput);
   };

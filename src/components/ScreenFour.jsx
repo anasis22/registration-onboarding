@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -11,18 +11,25 @@ import { useNavigate } from "react-router-dom";
 
 const ScreenFour = () => {
   const navigate = useNavigate();
-  const {bankNoRef,usersData,user,setFResult,getData} = useData();
+  const [noLength,setNoLength] = useState()
+  const {bankNoRef,usersData,user,setFResult} = useData();
  
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFResult(usersData.filter((el) => {
-      return el.id == user.id
-    }))
-    if(bankNoRef.current.value.length >= 12){
-      navigate("/Dashboard")
+    
+    if(noLength.length >= 12){
+      setFResult(usersData.filter((el) => {
+        return el.id == user.id
+      }))
+      if(bankNoRef.current.value.length >= 12){
+        navigate("/Dashboard")
+      }else{
+        console.log('somethings wrong');
+      }
     }else{
-      console.log('somethings wrong');
+      alert("Enter the 12 digit number")
     }
+   
 
   }
   
@@ -242,16 +249,17 @@ const ScreenFour = () => {
               </label>
               <input
                 ref={bankNoRef}
+                onChange={(e) => setNoLength(e.target.value)}
                 className="mt-2 w-full text-t15px text-tGreyFM focus:outline-none focus:border-tBlueH focus:shadow-md outline-none rounded-md border border-tGreyF py-3.5 px-4"
                 type="text"
                 required
-                placeholder="Enter your number"
+                placeholder="Enter the 12 digit numbers"
               />
-              <img
+              {noLength.length >= 12 ? <img
                 className="absolute cursor-pointer text-tBlack text-t15px right-4 bottom-3.5"
                 src={Gtick}
                 alt="verify"
-              />
+              />:""}
             </section>
 
             <section className="w-full mt-16">

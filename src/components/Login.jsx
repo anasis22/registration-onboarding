@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -11,13 +11,11 @@ import "react-phone-number-input/style.css";
 
 const Login = () => {
   const {
-    getData,
     login,
     loginEmailRef,
     loginPasswordRef,
     showPassword,
     setShowPassword,
-    fResult,
     setFResult,
     usersData,
   } = useData();
@@ -34,7 +32,6 @@ const Login = () => {
       await login(loginEmailRef.current.value, loginPasswordRef.current.value);
       setFResult(
         usersData.filter((el) => {
-          console.log(el.email == loginEmailRef.current.value);
           return el.email == loginEmailRef.current.value;
         })
       );

@@ -9,7 +9,7 @@ import RightArrow from "/src/assets/icons/rightArrow.png";
 import RightArrowWhite from "/src/assets/icons/rightArrowWhite.png";
 import Business from "/src/assets/icons/business.png";
 import { useData } from "../contexts/DataContexts";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ScreenOne = () => {
   const { myborder, setmyBorder,getData } = useData();
