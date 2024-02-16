@@ -41,7 +41,8 @@ const ScreenTwo = () => {
       await setData(documentName)
       navigate("/ScreenThree")
     }catch(err){
-      err
+      console.log(err.code);
+      err.code === "auth/email-already-in-use" && alert("This email already exists")
     }
    
   };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import OasisLogo from "/src/assets/icons/OasisLogo.png";
 import Dots from "/src/assets/icons/Dots.png";
 import Gtick from "/src/assets/icons/Gtick.png";
@@ -256,7 +256,7 @@ const ScreenFour = () => {
                 placeholder="Enter the 12 digit numbers"
               />
               {noLength && noLength.length >= 12 ? <img
-                className="absolute cursor-pointer text-tBlack text-t15px right-4 bottom-3.5"
+                className="absolute text-tBlack text-t15px right-4 bottom-3.5"
                 src={Gtick}
                 alt="verify"
               />:""}
